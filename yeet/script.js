@@ -32,14 +32,29 @@
             
             for(var i = 0; i < data1.data.length; i++){
                 follows.push(data1.data[i].to_name);
-                
+                var title = data1.data[i].to_name;
+                var key = data1.data[i].to_name;
+                $('main').append(`
+							      <article class="item" data-key="${key}">
+								      <div class="details">
+								      	<h4>${title}</h4>
+							      	</div>
+						      	</article>
+						`);
             }
             
           
         }
       });
       console.log(follows);
-      
+  $('main').on('click', 'article', function(){
+    var id = $(this).attr('data-key');
+    new Twitch.Embed("twitch-embed", {
+      width: 854,
+      height: 480,
+      channel: id 
+    });
+  });
       
 
   });
