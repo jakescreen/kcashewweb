@@ -2,3 +2,33 @@
     text-align: center;
     left: 50%;
 }
+body{
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "novel twitch youtube"
+        "main viewer viewer"
+        "main viewer viewer";
+
+
+}
+
+#nov{
+    grid-area: novel;
+}
+
+#twi{
+    grid-area: twitch;
+}
+#yout{
+    grid-area: youtube;
+}
+
+
+#twitchView{
+    grid-area: main;
+}
+#twitch-embed{
+    grid-area: viewer;
+}
