@@ -9,7 +9,7 @@ $(document).ready(function () {
               TitleLinkTarget:'_blank'
             });
       }
-  
+      https://www.wangmamaread.com/category/the-tutorial-is-too-hard/feed
         grabNovel('https://www.royalroad.com/fiction/syndication/16946');
         grabNovel('https://www.royalroad.com/fiction/syndication/26294');
   */
@@ -43,9 +43,7 @@ $(document).ready(function () {
     document.getElementById("twitch-embed").style.visibility = "hidden";
     shown = "";
   }
-
-
-
+  //https://api.twitch.tv/helix/streams?user_login=monstercat
   function showTwitch() {
     if (!loaded) {
       var followsURL = "https://api.twitch.tv/helix/users/follows?from_id=455825055";
@@ -56,9 +54,10 @@ $(document).ready(function () {
           'Client-ID': 'rc8uqc4k9iv82b8l339oymibbd3nkb'
         },
         success(data1) {
-
+          console.log(data1);
           for (var i = 0; i < data1.data.length; i++) {
             follows.push(data1.data[i].to_name);
+            
             var title = data1.data[i].to_name;
             var key = data1.data[i].to_name;
 
