@@ -23,6 +23,7 @@ $(document).ready(function () {
   var twiShown = false;
   var loaded = false;
   var follows = [];
+  var onlineArr = [];
 
 
   $('#twi').on('click', function () {
@@ -54,20 +55,48 @@ $(document).ready(function () {
           'Client-ID': 'rc8uqc4k9iv82b8l339oymibbd3nkb'
         },
         success(data1) {
+          
           console.log(data1);
           for (var i = 0; i < data1.data.length; i++) {
+            
             follows.push(data1.data[i].to_name);
             
             var title = data1.data[i].to_name;
             var key = data1.data[i].to_name;
 
+            var onStatusURL = "https://api.twitch.tv/helix/streams?user_login=" + title;
+            var onlineStatus = "";
+            $.ajax({
+              type: 'GET',
+              url: onStatusURL,
+              headers: {
+                'Client-ID': 'rc8uqc4k9iv82b8l339oymibbd3nkb'
+              },
+              success(data2) {
+                onlineStatus = data2.data[0].type;
+                console.log(data2);
+                if(data2.data.length > 0){
+                  onlineStatus = "live";
+                }
+                else{
+                  onlineStatus = "offline";
+                }
+                console.log(onlineStatus);
+                
+              }
+              
+              
+            });
+            
             $('main').append(`
 							      <article class="item" data-key="${key}">
 								      <div class="details">
-								      	<h4>${title}</h4>
+                        <h4>${title}</h4>
+                        <h4>${onlineStatus}</h4>
 							      	</div>
 						      	</article>
-						`);
+            `);
+            
 
 
           }
