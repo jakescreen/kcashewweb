@@ -22,6 +22,7 @@ $(document).ready(function () {
         */
   var twiShown = false;
   var loaded = false;
+  var listed = false;
   var follows = [];
   var onlineArr = [];
 
@@ -30,13 +31,19 @@ $(document).ready(function () {
 
     if (twiShown == false) {
       showTwitch();
+      
+      
+      
     }
     else {
       hideTwitch();
     }
     twiShown = !twiShown;
 
-    console.log(twiShown);
+    
+  });
+  $('#appendTwitch').on('click', function(){
+    displayTwitch();
   });
 
   function hideTwitch() {
@@ -44,6 +51,7 @@ $(document).ready(function () {
     document.getElementById("twitch-embed").style.visibility = "hidden";
     shown = "";
     console.log(onlineArr);
+    console.log(follows);
   }
   //https://api.twitch.tv/helix/streams?user_login=monstercat
   function showTwitch() {
@@ -80,30 +88,26 @@ $(document).ready(function () {
                 if(data2.data.length > 0){
                   onlineStatus = data2.data[0].type;
                   
+                  
                 }
                 else{
                   onlineStatus = "offline";
+                  
                 }
-                var stribg = onlineStatus;
-                onlineArr.push(stribg);
+                onlineArr.push(onlineStatus);
                 
-                console.log(onlineStatus);
-                console.log(onlineArr[i]);
+                /*
+                
+            */
+            
+                
                 
               }
               
               
             });
-            var onlineStat = onlineArr[i];
             
-            $('main').append(`
-							      <article class="item" data-key="${key}">
-								      <div class="details">
-                        <h4>${title}</h4>
-                        <p>${onlineStat}</p>
-							      	</div>
-						      	</article>
-            `);
+            
             
 
 
@@ -115,7 +119,7 @@ $(document).ready(function () {
         }
         
       });
-      console.log(follows);
+      
 
       var embed = new Twitch.Embed("twitch-embed", {
         width: 854,
@@ -137,8 +141,28 @@ $(document).ready(function () {
     }
     
   }
+  
 
-
+  function displayTwitch(){
+    console.log("here");
+    if(!listed){
+      console.log(follows);
+      for(var i = 0; i < follows.length; i++){
+        var title = follows[i];
+        
+        var status = onlineArr[i];
+        $('main').append(`
+							      <article class="item" data-key="${title}">
+								      <div class="details">
+                        <h4>${title}</h4>
+                        <p>${status}</p>
+							      	</div>
+						      	</article>
+            `);
+      }
+      listed = true;
+    }
+  }
 
 
 });
