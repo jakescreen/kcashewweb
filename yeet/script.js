@@ -43,6 +43,7 @@ $(document).ready(function () {
     document.getElementById("twitchView").style.visibility = "hidden";
     document.getElementById("twitch-embed").style.visibility = "hidden";
     shown = "";
+    console.log(onlineArr);
   }
   //https://api.twitch.tv/helix/streams?user_login=monstercat
   function showTwitch() {
@@ -83,19 +84,23 @@ $(document).ready(function () {
                 else{
                   onlineStatus = "offline";
                 }
-                console.log(onlineStatus);
+                var stribg = onlineStatus;
+                onlineArr.push(stribg);
                 
+                console.log(onlineStatus);
+                console.log(onlineArr[i]);
                 
               }
               
               
             });
+            var onlineStat = onlineArr[i];
             
             $('main').append(`
 							      <article class="item" data-key="${key}">
 								      <div class="details">
                         <h4>${title}</h4>
-                        <p>${onlineStatus}</p>
+                        <p>${onlineStat}</p>
 							      	</div>
 						      	</article>
             `);
@@ -104,9 +109,11 @@ $(document).ready(function () {
 
           }
           loaded = true;
+          
 
 
         }
+        
       });
       console.log(follows);
 
@@ -123,10 +130,12 @@ $(document).ready(function () {
         document.getElementById("twitch-embed").hidden = false;
       });
     }
+    
     else{
       document.getElementById("twitch-embed").style.visibility = "visible";
       document.getElementById("twitchView").style.visibility = "visible";
     }
+    
   }
 
 
