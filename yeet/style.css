@@ -32,3 +32,16 @@ body{
 #twitch-embed{
     grid-area: viewer;
 }
+article {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+            align-items: center;
+    padding: 8px 12px;
+    border: 2px solid white;
+    border-radius: 8px;
+    margin: 0 auto;
+  }
+  article:hover {
+    border: 2px solid #ff9999;
+  }

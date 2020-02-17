@@ -25,6 +25,7 @@ $(document).ready(function () {
   var listed = false;
   var follows = [];
   var onlineArr = [];
+  var streamArr = [];
 
 
   $('#twi').on('click', function () {
@@ -57,6 +58,10 @@ $(document).ready(function () {
   function showTwitch() {
     if (!loaded) {
       var followsURL = "https://api.twitch.tv/helix/users/follows?from_id=455825055";
+      var streamers = {
+        name: "",
+        online: ""
+      }
       var onlineStatus = "";
       $.ajax({
         type: 'GET',
@@ -70,7 +75,7 @@ $(document).ready(function () {
           for (var i = 0; i < data1.data.length; i++) {
             
             follows.push(data1.data[i].to_name);
-            
+            streamers.name = data1.data[i].to_name;
             var title = data1.data[i].to_name;
             var key = data1.data[i].to_name;
 
@@ -95,6 +100,7 @@ $(document).ready(function () {
                   
                 }
                 onlineArr.push(onlineStatus);
+                streamers.online = onlineStatus;
                 
                 /*
                 
@@ -110,7 +116,7 @@ $(document).ready(function () {
             
             
 
-
+            streamArr.push(streamers);
           }
           loaded = true;
           
@@ -144,7 +150,7 @@ $(document).ready(function () {
   
 
   function displayTwitch(){
-    console.log("here");
+    console.log(streamArr);
     if(!listed){
       console.log(follows);
       for(var i = 0; i < follows.length; i++){
