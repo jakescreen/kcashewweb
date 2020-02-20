@@ -28,6 +28,9 @@ body{
 }
 #divRss{
     grid-area: novels;
+    overflow: scroll;
+    height: 800px;
+    width: 360px;
     
 }
 
