@@ -87,8 +87,9 @@ $(document).ready(function () {
           loaded = true;
         }
       });
+      
       var embed = new Twitch.Embed("twitch-embed", {
-        width: 854,
+        width: 840,
         height: 480,
         channel: 'kamikazecashew'
       });

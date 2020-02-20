@@ -1,17 +1,17 @@
-#divRss{
-    text-align: center;
-    left: 50%;
-}
 body{
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-columns: 240px 840px 360px;
     grid-template-rows: auto;
     grid-template-areas:
         "novel twitch youtube"
-        "main viewer viewer"
-        "main viewer viewer";
+        "main viewer novels"
+        "main viewer novels";
     color: white;
-    background-color: teal;
+    background-image: url("vaporwave.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
 
 
 }
@@ -26,11 +26,23 @@ body{
 #yout{
     grid-area: youtube;
 }
+#divRss{
+    grid-area: novels;
+    
+}
 
 
 #twitchView{
     grid-area: main;
+    overflow: scroll;
+    height: 800px;
+    width: 240px;
 }
+
+
+
+
+ 
 #twitch-embed{
     grid-area: viewer;
 }
@@ -46,4 +58,8 @@ article {
   }
   article:hover {
     border: 2px solid #000000;
+  }
+  
+  a{
+      color: white;
   }
