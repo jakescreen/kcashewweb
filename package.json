@@ -1,0 +1,22 @@
+{
+  "name": "kcashewweb",
+  "version": "1.0.0",
+  "description": "homepage for kcashew",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakescreen/kcashewweb.git"
+  },
+  "author": "jake screen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jakescreen/kcashewweb/issues"
+  },
+  "engines": {
+    "node": "10.x"
+  },
+  "homepage": "https://github.com/jakescreen/kcashewweb#readme"
+}
